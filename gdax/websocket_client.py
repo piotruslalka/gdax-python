@@ -64,6 +64,7 @@ class WebsocketClient(object):
             timestamp = str(time.time())
             message = timestamp + 'GET' + '/users/self'
             #sub_params.update(get_auth_headers(timestamp, message, self.api_key,  self.api_secret, self.api_passphrase))
+            print("Code Change Successful")
             message = message.encode('ascii')
             hmac_key = base64.b64decode(self.api_secret)
             signature = hmac.new(hmac_key, message, hashlib.sha256)
