@@ -23,6 +23,7 @@ class OrderBook(WebsocketClient):
         if self._log_to:
             assert hasattr(self._log_to, 'write')
         self._current_ticker = None
+        
 
     @property
     def product_id(self):
@@ -60,7 +61,7 @@ class OrderBook(WebsocketClient):
         if self._log_to:
             pickle.dump(message, self._log_to)
 
-        sequence = message['sequence']
+        sequence = message.get('sequence', -1)
         if self._sequence == -1:
             self.reset_book()
             return
